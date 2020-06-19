@@ -12,28 +12,17 @@ function smallestCommons(arr) {
     let listFactors = [];
  
     factors.map(factor => {
-  
-      
       let uniques = factor.filter((value, index, self)=>(self.indexOf(value)===index));
       console.log(uniques);
       uniques.forEach(n => {
-        console.log(factor, n);
         let container = [];
         let count = factor.filter((value)=>(value===n)).length;
-        
         container.push(n, count);
         listFactors.push(container);
         console.log('push', n, count);
       });
-      
-        
-      
-      
     });
-  
-  
      return (listFactors);
-  
   }
   
   function getFactors(n) {
@@ -54,6 +43,8 @@ function smallestCommons(arr) {
       } 
     } 
   }
+  
+
   function isPrime(n) {
     if (n===1||n===0) return true;
     for(let i=2; i<n; i++)
