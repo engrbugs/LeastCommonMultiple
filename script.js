@@ -37,7 +37,7 @@ function smallestCommons(arr) {
     return (lcmFactor.reduce((a, b)=>(a*b), 1));
   }
   
-  
+
   function getFactors(n) {
     if (n===1) return [1];
     let fac = [];
@@ -65,12 +65,5 @@ function smallestCommons(arr) {
     return true;
   }
   
- 
 
 console.log(smallestCommons([2, 10]));
-// let masterArr = [];
-// let contArr = [];
-
-// contArr.push(2, 3);
-// masterArr.push(contArr)
-// console.log(masterArr);
