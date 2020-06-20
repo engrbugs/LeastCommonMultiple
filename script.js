@@ -4,13 +4,13 @@ function smallestCommons(arr) {
     for (let i=arr[0]; i<=arr[1]; i++) {
       newArr.push(i)
     }
-    console.log(newArr);
+    console.log('Get the LCM of:', newArr);
     let factors = [];
     newArr.forEach(n=>factors.push(getFactors(n)));
-    console.log(factors);
+    console.log('Factors of each numbers:', factors);
 
     let listFactors = [];
- 
+    console.log('Unique Factor are:');
     factors.map(factor => {
       let uniques = factor.filter((value, index, self)=>(self.indexOf(value)===index));
       console.log(uniques);
@@ -19,11 +19,24 @@ function smallestCommons(arr) {
         let count = factor.filter((value)=>(value===n)).length;
         container.push(n, count);
         listFactors.push(container);
-        console.log('push', n, count);
       });
     });
-     return (listFactors);
+    console.log('Transpose all factors into 2-dimensional:', listFactors);
+
+    let highestFactor = [];
+    let uniqeuLCMfactor = listFactors.map(n=>n[0])
+    .filter((value, index, self)=>(self.indexOf(value)===index));
+    console.log('Unique LCM factor:', uniqeuLCMfactor);
+
+    let lcmFactor = [];
+    uniqeuLCMfactor.forEach(el=>{
+      for (let i=0; i<listFactors.filter(n=>n[0]===el).map(n=>n[1]).sort((a,b)=>(b-a))[0]; i++) 
+        lcmFactor.push(el);
+    })
+    console.log('LCM Factors are:', lcmFactor);
+    return (lcmFactor.reduce((a, b)=>(a*b), 1));
   }
+  
   
   function getFactors(n) {
     if (n===1) return [1];
@@ -43,7 +56,7 @@ function smallestCommons(arr) {
       } 
     } 
   }
-  
+
 
   function isPrime(n) {
     if (n===1||n===0) return true;
